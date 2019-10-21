@@ -77,7 +77,6 @@ namespace PatiroTask.Controllers
                             .Where(c => c.Type == ClaimTypes.Role)
                             .Select(c => c.Value.ToLower());
 
-                        //Can be shortened to this, when all the debugging isn't necessary
                         foreach (var prop in typeof(Clinic).GetProperties())
                             if (roleAccessData.GetRoleAccessesForProperty(prop.Name)
                                 .Where(ra => ra.RoleLowered != "partner" || clinic.Members.Any(m => m == User.Identity.Name))
